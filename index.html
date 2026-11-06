@@ -1,43 +1,3014 @@
 <!DOCTYPE html>
-<!--
-  ================================================================
-  VELVET MUSIC — OFFICIAL LANDING PAGE
-  ENCRYPTED BY VELVET CIPHER ARCHITECTURE
-  (C) 2026 VELVET PRODUCTION. ALL RIGHTS RESERVED.
-  UNAUTHORIZED REVERSE ENGINEERING OR CLONING IS STRICTLY FORBIDDEN.
-  ================================================================
--->
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Velvet Music — Precision Audio Engineering</title>
-<style>
-body{margin:0;background:#030306;color:#7c5cfc;display:flex;align-items:center;justify-content:center;height:100vh;font-family:monospace;overflow:hidden}
-.loader{font-size:12px;letter-spacing:0.2em;text-transform:uppercase;animation:pulse 1.2s infinite ease-in-out}
-@keyframes pulse{0%,100%{opacity:0.3}50%{opacity:1}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <title>Velvet Music — Download Studio Edition for Android & Windows</title>
+  
+  <meta name="description" content="Download Velvet Music v1.2.3 for Android (APK) and Windows. 16D Vocal & Drum Spatial Separation, Studio Calibrated Soundstage EQ, Hardware Latency Buffer, and Zero Jitter.">
+  <meta name="keywords" content="Velvet Music, music player, android apk, windows music player, 16D audio, spatial audio, studio eq, offline music player, amoled black">
+  <meta name="theme-color" content="#000000">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Velvet Music — Studio Edition for Android & Windows">
+  <meta property="og:description" content="Audiophile-grade music player with 16D spatial separation, studio soundstage EQ, and pure AMOLED black design. Download direct APK & Windows desktop edition.">
+  <meta property="og:image" content="assets/icon.png">
+  
+  <link rel="icon" type="image/svg+xml" href="assets/icon-transparent.svg">
+  <link rel="apple-touch-icon" href="assets/icon.png">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ─────────────────────────────────────────────────────────────
+       VELVET MUSIC DESIGN SYSTEM (Everything like our app)
+       ───────────────────────────────────────────────────────────── */
+    :root {
+      --bg: #000000;
+      --bg-surface: #0a0a0a;
+      --bg-card: #151311;
+      --bg-card-hover: #1b1916;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-card: rgba(255, 255, 255, 0.12);
+      --border-highlight: rgba(255, 255, 255, 0.28);
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.65);
+      --text-subtle: rgba(255, 255, 255, 0.42);
+      --accent-purple: #a855f7;
+      --accent-pink: #ec4899;
+      --accent-cyan: #ec4899;
+      --accent-velvet: #ec4899;
+      --accent-gradient: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
+      --accent-emerald: #10b981;
+      --accent-amber: #f59e0b;
+      --glow-halo: rgba(255, 255, 255, 0.08);
+      --nav-height: 52px;
+      color-scheme: dark;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--bg);
+      color: var(--text-main);
+      font-family: 'Plus Jakarta Sans', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: #000000;
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    ::selection {
+      background: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+    }
+
+    /* Custom Ultra-Thin Scrollbar */
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+    }
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* ── AMBIENT ARTWORK BACKDROP (App-Inspired Rotating Glow) ── */
+    .ambient-glow-wrapper {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .ambient-glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: 0.18;
+      animation: ambientFloat 22s infinite alternate ease-in-out;
+      will-change: transform;
+    }
+    .orb-1 {
+      top: -15%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(147, 51, 234, 0.45) 0%, rgba(236, 72, 153, 0.2) 60%, transparent 80%);
+      animation: floatOrb1 18s infinite alternate ease-in-out;
+    }
+    .orb-2 {
+      top: 45%;
+      left: 10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.28) 0%, transparent 70%);
+      animation: floatOrb2 24s infinite alternate ease-in-out;
+      animation-delay: -4s;
+    }
+    .orb-3 {
+      top: 75%;
+      right: 5%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, transparent 70%);
+      animation: floatOrb3 21s infinite alternate ease-in-out;
+      animation-delay: -8s;
+    }
+
+    @keyframes floatOrb1 {
+      0% { transform: translate(-50%, 0) scale(1); }
+      50% { transform: translate(-42%, 45px) scale(1.08); }
+      100% { transform: translate(-58%, -30px) scale(0.96); }
+    }
+    @keyframes floatOrb2 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(35px, -45px) scale(1.1); }
+      100% { transform: translate(-25px, 25px) scale(0.94); }
+    }
+    @keyframes floatOrb3 {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(-45px, -30px) scale(1.06); }
+      100% { transform: translate(20px, 35px) scale(0.95); }
+    }
+
+    /* ── INSTAGRAM / IN-APP BROWSER HELPER BANNER ── */
+    #inapp-browser-notice {
+      display: none;
+      position: sticky;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 9999;
+      background: linear-gradient(90deg, #ec4899, #8b5cf6);
+      color: #ffffff;
+      padding: 10px 18px;
+      text-align: center;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.6);
+    }
+    #inapp-browser-notice span {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 700;
+      color: #fef08a;
+    }
+
+    /* ── CONTAINER ── */
+    .container {
+      width: 100%;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── ROUNDED FLOATING NAVBAR ── */
+    .navbar-container {
+      position: fixed;
+      top: 18px;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      padding: 0 16px;
+      pointer-events: none;
+    }
+    .rounded-navbar {
+      pointer-events: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: rgba(21, 19, 17, 0.82);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 9999px;
+      height: var(--nav-height);
+      padding: 5px 8px 5px 16px;
+      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.85), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      width: 100%;
+      max-width: 900px;
+    }
+    .rounded-navbar:hover {
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+    
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: #ffffff;
+      user-select: none;
+    }
+    .nav-brand-logo {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.25));
+    }
+    .nav-brand-text {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    .nav-brand-badge {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      list-style: none;
+    }
+    .nav-link {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      transition: color 0.2s, transform 0.2s;
+      white-space: nowrap;
+    }
+    .nav-link:hover {
+      color: #ffffff;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #000000;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 0 16px;
+      height: 38px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease;
+      box-shadow: 0 4px 18px rgba(255, 255, 255, 0.18);
+      white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .nav-cta:hover {
+      transform: translateY(-1.5px) scale(1.03);
+      box-shadow: 0 8px 28px rgba(255, 255, 255, 0.38);
+      background: #f4f4f5;
+    }
+    .nav-cta:active {
+      transform: scale(0.95);
+    }
+
+    /* Mobile Nav Toggle */
+    .mobile-menu-btn {
+      display: none;
+      background: transparent;
+      border: none;
+      color: #fff;
+      padding: 6px;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    .mobile-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(var(--nav-height) + 10px);
+      left: 16px;
+      right: 16px;
+      background: rgba(21, 19, 17, 0.96);
+      backdrop-filter: blur(25px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 24px;
+      padding: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+      pointer-events: auto;
+    }
+    .mobile-dropdown.is-open {
+      display: flex;
+    }
+    .mobile-dropdown .nav-link {
+      font-size: 15px;
+      padding: 8px;
+    }
+
+    /* ── CENTER HERO SECTION ── */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 130px 20px 60px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Hero entrance animations */
+    @keyframes heroFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes heroScaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.92);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .hero-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      letter-spacing: 0.04em;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+      transition: border-color 0.25s, transform 0.2s ease;
+      animation: heroScaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+      cursor: default;
+    }
+    .hero-pill-badge:hover {
+      border-color: rgba(255, 255, 255, 0.28);
+      transform: translateY(-1px);
+    }
+    .pulsing-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #a855f7, #ec4899);
+      box-shadow: 0 0 10px #ec4899, 0 0 16px #a855f7;
+      animation: pulseAnim 2s infinite;
+    }
+    @keyframes pulseAnim {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    /* CENTER MAIN HEADING */
+    .hero-main-heading {
+      font-size: clamp(40px, 7vw, 76px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      color: #ffffff;
+      max-width: 880px;
+      margin: 0 auto 20px;
+      text-wrap: balance;
+      animation: heroFadeUp 0.75s 0.08s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 30%, rgba(255, 255, 255, 0.5) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+    .gradient-text-colored {
+      background: linear-gradient(135deg, #ffffff 10%, #a855f7 60%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .hero-subheading {
+      font-size: clamp(15px, 2.2vw, 19px);
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.65);
+      font-weight: 400;
+      max-width: 680px;
+      margin: 0 auto 34px;
+      animation: heroFadeUp 0.8s 0.16s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    /* CENTER DUAL DOWNLOAD CTA BUTTONS */
+    .hero-cta-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+      width: 100%;
+      max-width: 720px;
+      animation: heroFadeUp 0.85s 0.24s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .download-card-btn {
+      flex: 1 1 290px;
+      max-width: 340px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      border-radius: 20px;
+      text-decoration: none;
+      text-align: left;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, background-color 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .download-card-btn:hover {
+      transform: translateY(-3px) scale(1.015);
+    }
+    .download-card-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* Android Button - Studio White Accent */
+    .btn-android-primary {
+      background: #ffffff;
+      color: #000000;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 12px 32px rgba(255, 255, 255, 0.18), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+    .btn-android-primary:hover {
+      background: #ffffff;
+      box-shadow: 0 16px 44px rgba(255, 255, 255, 0.32), 0 0 24px rgba(255, 255, 255, 0.2);
+    }
+    .btn-android-primary .btn-icon-wrapper {
+      background: #000000;
+      color: #ffffff;
+    }
+    .btn-android-primary .btn-title {
+      color: #000000;
+    }
+    .btn-android-primary .btn-meta {
+      color: rgba(0, 0, 0, 0.65);
+    }
+
+    /* Windows Button - Obsidian Glass Accent */
+    .btn-windows-secondary {
+      background: rgba(21, 19, 17, 0.85);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+    }
+    .btn-windows-secondary:hover {
+      background: rgba(30, 27, 24, 0.95);
+      border-color: rgba(255, 255, 255, 0.36);
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.9), 0 0 24px rgba(236, 72, 153, 0.18);
+    }
+    .btn-windows-secondary .btn-icon-wrapper {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .btn-windows-secondary .btn-title {
+      color: #ffffff;
+    }
+    .btn-windows-secondary .btn-meta {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .btn-icon-wrapper {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .download-card-btn:hover .btn-icon-wrapper {
+      transform: scale(1.08) rotate(-3deg);
+    }
+    .btn-icon-wrapper svg {
+      width: 22px;
+      height: 22px;
+    }
+    .btn-content {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .btn-title {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .btn-meta {
+      font-size: 12px;
+      font-weight: 500;
+      margin-top: 2px;
+    }
+    .btn-badge-chip {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(0, 0, 0, 0.1);
+      margin-left: 6px;
+      text-transform: uppercase;
+    }
+    .btn-windows-secondary .btn-badge-chip {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+    }
+
+    /* ── SINGLE IMAGE CINEMATIC SHOWCASE STAGE ── */
+    .showcase-section {
+      padding: 30px 20px 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+    .screens-showcase-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 1080px;
+      margin: 10px auto 36px;
+    }
+    .single-screen-stage {
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: visible;
+      touch-action: pan-y;
+      user-select: none;
+    }
+    .showcase-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: scale(0.93) translateY(20px);
+      filter: blur(8px);
+      transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                  visibility 0.45s;
+      z-index: 1;
+      will-change: transform, opacity, filter;
+    }
+    .showcase-slide.is-active {
+      position: relative;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: scale(1) translateY(0);
+      filter: blur(0);
+      z-index: 3;
+    }
+    .showcase-slide.is-exiting-forward {
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: scale(0.92) translateX(-45px);
+      filter: blur(10px);
+      z-index: 1;
+    }
+    .showcase-slide.is-exiting-backward {
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: scale(0.92) translateX(45px);
+      filter: blur(10px);
+      z-index: 1;
+    }
+
+    /* Screen Frames */
+    .screen-media-frame {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none !important;
+      background: #000000;
+      cursor: pointer;
+    }
+    
+    /* Mobile Portrait Frame */
+    .frame-mobile {
+      max-width: 370px;
+      width: 100%;
+      border-radius: 28px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 50px rgba(236, 72, 153, 0.12);
+    }
+    .frame-mobile img {
+      width: 100%;
+      height: auto;
+      max-height: 620px;
+      object-fit: contain !important;
+      display: block;
+      border-radius: 28px;
+    }
+
+    /* Windows Desktop Frame - FULL SIZE, 0% CUT */
+    .frame-desktop {
+      width: 100%;
+      max-width: 1040px;
+      border-radius: 20px;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 55px rgba(0, 120, 212, 0.16);
+    }
+    .frame-desktop img {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      object-fit: contain !important;
+      display: block;
+      border-radius: 20px;
+    }
+
+    /* OS Badge - Pure Icon with Drop Shadow, No Background, No Text */
+    .screen-card-icon-badge {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      pointer-events: none;
+      filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.95));
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .screen-media-frame:hover .screen-card-icon-badge {
+      transform: scale(1.15);
+    }
+    .screen-card-icon-badge svg {
+      width: 32px;
+      height: 32px;
+      display: block;
+    }
+
+    /* ── DUAL PLATFORM DOWNLOAD HUB (Android & Windows Cards) ── */
+    .section-title-wrap {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #c084fc 0%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+    .section-heading {
+      font-size: clamp(28px, 4.5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+    }
+    .section-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 12px auto 0;
+      line-height: 1.6;
+    }
+
+    /* ── DONATION & CREATOR SUPPORT UI ── */
+    .app-support-card {
+      width: 100%;
+      max-width: 580px;
+      margin: 32px auto 0;
+      background: #151311;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 26px;
+      padding: 24px 26px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .app-support-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 15%;
+      right: 15%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.5), transparent);
+    }
+    .support-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .support-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(236, 72, 153, 0.12);
+      border: 1px solid rgba(236, 72, 153, 0.28);
+      color: #f472b6;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      letter-spacing: 0.02em;
+    }
+    .support-free-pill {
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.06);
+      padding: 3px 10px;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .support-card-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .support-card-desc {
+      font-size: 13px;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.65);
+      margin-bottom: 20px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .support-actions-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .support-primary-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 11px 22px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 18px rgba(255, 255, 255, 0.2);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .support-primary-btn:hover {
+      background: #f4f4f5;
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 26px rgba(255, 255, 255, 0.35);
+    }
+    .support-primary-btn:active {
+      transform: scale(0.95);
+    }
+    .support-upi-quick-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 11px 20px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .support-upi-quick-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: translateY(-2px);
+    }
+    .support-upi-quick-btn:active {
+      transform: scale(0.95);
+    }
+
+    /* ── DONATION MODAL (AMOLED Dark) ── */
+    .donation-modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .donation-modal-backdrop.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .donation-modal-sheet {
+      width: 100%;
+      max-width: 440px;
+      background: #151311;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 28px;
+      padding: 28px 24px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95);
+      transform: translateY(24px) scale(0.95);
+      transition: transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .donation-modal-backdrop.is-open .donation-modal-sheet {
+      transform: translateY(0) scale(1);
+    }
+    .modal-drag-bar {
+      width: 36px;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      margin: -10px auto 16px;
+    }
+    .donation-modal-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .donation-modal-heart {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: rgba(236, 72, 153, 0.12);
+      border: 1px solid rgba(236, 72, 153, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .modal-close-btn {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 6px 10px;
+      border-radius: 50%;
+      transition: color 0.15s, background-color 0.15s, transform 0.15s;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .modal-close-btn:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      transform: scale(1.1);
+    }
+    .modal-close-btn:active {
+      transform: scale(0.9);
+    }
+    .donation-amounts-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .amount-pill {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      padding: 10px 8px;
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .amount-pill:hover {
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+    .amount-pill.is-active {
+      background: #ffffff;
+      color: #000000;
+      border-color: #ffffff;
+      box-shadow: 0 4px 14px rgba(255, 255, 255, 0.3);
+      transform: translateY(-1px);
+    }
+    .amount-pill:active {
+      transform: scale(0.94);
+    }
+    .upi-box {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px dashed rgba(255, 255, 255, 0.16);
+      border-radius: 16px;
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      text-align: left;
+    }
+    .upi-label {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 600;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .upi-field {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .upi-id-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      color: #f472b6;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .upi-copy-btn {
+      background: rgba(236, 72, 153, 0.14);
+      border: 1px solid rgba(236, 72, 153, 0.32);
+      color: #f472b6;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 16px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .upi-copy-btn:hover {
+      background: rgba(236, 72, 153, 0.24);
+      border-color: rgba(236, 72, 153, 0.55);
+      transform: scale(1.03);
+    }
+    .upi-copy-btn:active {
+      transform: scale(0.95);
+    }
+    .modal-footer-note {
+      font-size: 11.5px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.5);
+      margin: 0;
+      text-align: center;
+    }
+
+    /* ── SOUND PREVIEW SECTION (Interactive Audio Player) ── */
+    .sounds-section {
+      padding: 70px 20px;
+      position: relative;
+    }
+    .sounds-scroller-wrap {
+      max-width: 1060px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+    .sounds-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin: 0 auto;
+    }
+    .sounds-inline-scroller {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      gap: 20px;
+      padding: 10px 4px 20px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+    }
+    .sounds-inline-scroller::-webkit-scrollbar {
+      height: 4px;
+    }
+    .sounds-inline-scroller::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+    }
+    .sound-card {
+      background: #151311;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 22px;
+      padding: 24px;
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s, box-shadow 0.28s, background-color 0.25s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex: 1 1 0;
+      min-width: 280px;
+      scroll-snap-align: start;
+    }
+    .sound-card:hover {
+      border-color: rgba(255, 255, 255, 0.24);
+      background: #181614;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+    .sound-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent-amber);
+      margin-bottom: 8px;
+    }
+    .sound-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .sound-desc {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+    .sound-player-control {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .sound-play-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.2s ease;
+      box-shadow: 0 4px 14px rgba(255, 255, 255, 0.18);
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .sound-play-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.35);
+    }
+    .sound-play-toggle:active {
+      transform: scale(0.92);
+    }
+    .is-playing .sound-play-toggle {
+      background: linear-gradient(135deg, #a855f7, #ec4899);
+      color: #ffffff;
+      box-shadow: 0 0 24px rgba(236, 72, 153, 0.65);
+    }
+    .sound-play-toggle svg {
+      width: 16px;
+      height: 16px;
+    }
+    .sound-wave-bars {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      height: 24px;
+      flex: 1;
+    }
+    .sound-wave-bar {
+      flex: 1;
+      height: 20%;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 999px;
+      transition: height 0.2s;
+    }
+    .is-playing .sound-wave-bar {
+      background: linear-gradient(180deg, #c084fc, #ec4899);
+      animation: soundWave 0.6s infinite ease-in-out alternate;
+    }
+    .is-playing .sound-wave-bar:nth-child(2) { animation-delay: 0.1s; }
+    .is-playing .sound-wave-bar:nth-child(3) { animation-delay: 0.2s; }
+    .is-playing .sound-wave-bar:nth-child(4) { animation-delay: 0.3s; }
+    .is-playing .sound-wave-bar:nth-child(5) { animation-delay: 0.4s; }
+    .is-playing .sound-wave-bar:nth-child(6) { animation-delay: 0.25s; }
+    .is-playing .sound-wave-bar:nth-child(7) { animation-delay: 0.15s; }
+
+    @keyframes soundWave {
+      0% { height: 15%; }
+      100% { height: 95%; }
+    }
+
+    /* ── UNIFIED FEATURES CONTAINER ── */
+    .features-section {
+      padding: 70px 20px 90px;
+    }
+    .features-single-container {
+      max-width: 1040px;
+      margin: 0 auto;
+      background: #151311;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 30px;
+      padding: 38px 36px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .features-single-container:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 30px 75px rgba(0, 0, 0, 0.85);
+    }
+    .features-single-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(236, 72, 153, 0.55), transparent);
+    }
+    .features-grid-unified {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 34px 40px;
+    }
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .feature-item:hover {
+      transform: translateX(3px);
+    }
+    .feature-item-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .feature-title-blue {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      background: linear-gradient(135deg, #ffffff 15%, #c084fc 65%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      transition: filter 0.25s ease;
+    }
+    .feature-item:hover .feature-title-blue {
+      filter: brightness(1.2) drop-shadow(0 2px 10px rgba(236, 72, 153, 0.35));
+    }
+    .feature-desc-dim {
+      font-size: 13.5px;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.65); /* Dim white content */
+      padding-left: 48px;
+    }
+    .features-single-container .feature-icon-box {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid rgba(236, 72, 153, 0.3);
+      color: #f472b6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-bottom: 0;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+    }
+    .feature-item:hover .feature-icon-box {
+      transform: scale(1.08);
+      background: rgba(236, 72, 153, 0.22);
+      border-color: rgba(236, 72, 153, 0.5);
+    }
+
+    /* ── INSTALLATION GUIDE WITH SINGLE PILL GLIDER ── */
+    .install-section {
+      padding: 70px 20px;
+      background: radial-gradient(circle at 50% 50%, rgba(21, 19, 17, 0.6) 0%, transparent 80%);
+    }
+    .install-tabs-nav-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 36px;
+    }
+    .install-tabs-pill {
+      display: inline-grid;
+      grid-template-columns: 1fr 1fr;
+      width: 330px;
+      max-width: calc(100vw - 32px);
+      position: relative;
+      background: rgba(21, 19, 17, 0.9);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 9999px;
+      padding: 4px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      user-select: none;
+      touch-action: manipulation;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .install-tabs-pill:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.8), 0 0 20px rgba(255, 255, 255, 0.04);
+    }
+    .install-pill-glider {
+      position: absolute;
+      top: 4px;
+      bottom: 4px;
+      left: 4px;
+      width: calc(50% - 4px);
+      background: #ffffff;
+      border-radius: 9999px;
+      transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 18px rgba(255, 255, 255, 0.35), 0 2px 6px rgba(0, 0, 0, 0.25);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .install-tab-btn {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 18px;
+      border-radius: 9999px;
+      font-size: 13.5px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      cursor: pointer;
+      transition: color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .install-tab-btn svg {
+      transition: fill 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .install-tab-btn:hover {
+      color: #ffffff;
+    }
+    .install-tab-btn:hover svg {
+      transform: scale(1.1);
+    }
+    .install-tab-btn.is-active {
+      color: #000000;
+      font-weight: 800;
+    }
+    .install-tab-btn.is-active svg {
+      fill: #000000;
+      transform: scale(1.08);
+    }
+    .install-tab-btn:active {
+      transform: scale(0.95);
+    }
+    .install-panel {
+      display: none;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .install-panel.is-active {
+      display: block;
+      animation: panelSlideUp 0.38s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    .install-panel.is-active .step-card {
+      animation: stepSlideIn 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .install-panel.is-active .step-card:nth-child(1) { animation-delay: 0.04s; }
+    .install-panel.is-active .step-card:nth-child(2) { animation-delay: 0.11s; }
+    .install-panel.is-active .step-card:nth-child(3) { animation-delay: 0.18s; }
+
+    @keyframes stepSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes panelSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .step-card {
+      background: #151311;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 22px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .step-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.6);
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 13px;
+      flex-shrink: 0;
+      color: #ffffff;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+    .step-card:hover .step-number {
+      background: linear-gradient(135deg, #a855f7, #ec4899);
+      color: #ffffff;
+      border-color: #ec4899;
+      transform: scale(1.08);
+      box-shadow: 0 4px 14px rgba(236, 72, 153, 0.4);
+    }
+    .step-content h4 {
+      font-size: 15.5px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .step-content p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── FAQ ACCORDION WITH BUTTERY SMOOTH EXPANSION ── */
+    .faq-section {
+      padding: 70px 20px 100px;
+    }
+    .faq-list {
+      max-width: 780px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .faq-item {
+      background: #151311;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .faq-item:hover {
+      border-color: rgba(255, 255, 255, 0.22);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      transform: translateY(-2px);
+    }
+    .faq-question {
+      width: 100%;
+      padding: 20px 24px;
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 15.5px;
+      font-weight: 700;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+    .faq-question:hover {
+      background: rgba(255, 255, 255, 0.03);
+      color: #f472b6;
+    }
+    .faq-question:active {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .faq-chevron {
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+      color: rgba(255, 255, 255, 0.5);
+      flex-shrink: 0;
+    }
+    .faq-item.is-open .faq-chevron {
+      transform: rotate(180deg);
+      color: #ec4899;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      padding: 0 24px;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, padding 0.35s ease;
+    }
+    .faq-item.is-open .faq-answer {
+      max-height: 300px;
+      opacity: 1;
+      padding: 0 24px 22px;
+    }
+
+    /* ── SCROLL REVEAL & STAGGER ANIMATIONS ── */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .reveal-on-scroll.is-revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .stagger-child {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .is-revealed .stagger-child:nth-child(1) { transition-delay: 0.04s; opacity: 1; transform: translateY(0); }
+    .is-revealed .stagger-child:nth-child(2) { transition-delay: 0.10s; opacity: 1; transform: translateY(0); }
+    .is-revealed .stagger-child:nth-child(3) { transition-delay: 0.16s; opacity: 1; transform: translateY(0); }
+    .is-revealed .stagger-child:nth-child(4) { transition-delay: 0.22s; opacity: 1; transform: translateY(0); }
+    .is-revealed .stagger-child:nth-child(5) { transition-delay: 0.28s; opacity: 1; transform: translateY(0); }
+    .is-revealed .stagger-child:nth-child(6) { transition-delay: 0.34s; opacity: 1; transform: translateY(0); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: #0a0a0a;
+      padding: 50px 20px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      text-decoration: none;
+      color: #ffffff;
+    }
+    .footer-brand img {
+      width: 28px;
+      height: 28px;
+    }
+    .footer-brand span {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .footer-tagline {
+      font-size: 13.5px;
+      color: var(--text-subtle);
+      margin-bottom: 24px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #ffffff;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.35);
+      font-family: 'Space Mono', monospace;
+    }
+
+    /* ── RESPONSIVE MEDIA QUERIES ── */
+
+    /* Tablet & below — hide desktop nav links, no hamburger either */
+    @media (max-width: 860px) {
+      .nav-menu {
+        display: none !important;
+      }
+      /* REMOVE hamburger completely on mobile */
+      .mobile-menu-btn {
+        display: none !important;
+      }
+      .mobile-dropdown {
+        display: none !important;
+      }
+      .rounded-navbar {
+        padding: 5px 8px 5px 14px;
+        max-width: calc(100vw - 28px);
+      }
+      .hero-section {
+        padding-top: 100px;
+        padding-bottom: 40px;
+        min-height: auto;
+      }
+      .showcase-section {
+        padding: 20px 12px 50px;
+      }
+      .section-title-wrap {
+        margin-bottom: 28px;
+      }
+    }
+
+    /* ── PHONE OPTIMIZED (≤ 640px) ── */
+    @media (max-width: 640px) {
+
+      /* --- Navbar: minimal pill with logo + CTA only --- */
+      .navbar-container {
+        top: 10px;
+        padding: 0 10px;
+      }
+      .rounded-navbar {
+        height: 46px;
+        padding: 4px 6px 4px 12px;
+        gap: 10px;
+      }
+      .nav-brand-logo {
+        width: 22px;
+        height: 22px;
+      }
+      .nav-brand-text {
+        font-size: 14px;
+      }
+      .nav-brand-badge {
+        font-size: 8px;
+        padding: 1.5px 5px;
+      }
+      .nav-cta {
+        height: 34px;
+        padding: 0 14px;
+        font-size: 11.5px;
+        gap: 6px;
+      }
+      .nav-cta svg {
+        width: 13px;
+        height: 13px;
+      }
+
+      /* --- Container tighter padding --- */
+      .container {
+        padding: 0 16px;
+      }
+
+      /* --- Hero: compact & focused --- */
+      .hero-section {
+        padding: 84px 16px 28px;
+        min-height: auto;
+        gap: 0;
+      }
+      .hero-pill-badge {
+        font-size: 10px;
+        padding: 5px 12px;
+        gap: 7px;
+        margin-bottom: 18px;
+      }
+      .hero-main-heading {
+        font-size: 32px;
+        line-height: 1.1;
+        margin-bottom: 14px;
+        letter-spacing: -0.03em;
+      }
+      .hero-subheading {
+        font-size: 13.5px;
+        line-height: 1.55;
+        margin-bottom: 22px;
+        max-width: 100%;
+      }
+
+      /* --- Download buttons: ONE LINE & COMPACT (Icon + Android / Windows only) --- */
+      .hero-cta-group {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        gap: 8px;
+        margin: 0 auto 24px;
+        width: 100%;
+        max-width: 380px;
+      }
+      .download-card-btn {
+        flex: 1 1 50% !important;
+        min-width: 0 !important;
+        max-width: 50% !important;
+        padding: 9px 12px !important;
+        border-radius: 9999px !important;
+        gap: 7px !important;
+        justify-content: center !important;
+        align-items: center !important;
+      }
+      .btn-desktop-prefix,
+      .btn-badge-chip,
+      .btn-meta {
+        display: none !important;
+      }
+      .btn-content {
+        flex-direction: row !important;
+        align-items: center !important;
+      }
+      .btn-title {
+        font-size: 13px !important;
+        font-weight: 700 !important;
+        white-space: nowrap !important;
+        line-height: 1 !important;
+      }
+      .btn-icon-wrapper {
+        width: 24px !important;
+        height: 24px !important;
+        border-radius: 50% !important;
+        flex-shrink: 0 !important;
+      }
+      .btn-icon-wrapper svg {
+        width: 13px !important;
+        height: 13px !important;
+      }
+
+      /* --- Ambient glow: toned down on mobile --- */
+      .ambient-glow-orb {
+        filter: blur(80px);
+        opacity: 0.12;
+      }
+      .orb-1 { width: 400px; height: 400px; }
+      .orb-2 { width: 300px; height: 300px; }
+      .orb-3 { width: 350px; height: 350px; }
+
+      /* --- Single Image Showcase on Mobile --- */
+      .screens-showcase-wrapper {
+        margin: 6px auto 24px;
+        width: 100%;
+      }
+      .frame-mobile {
+        max-width: 290px;
+        border-radius: 20px;
+      }
+      .frame-mobile img {
+        max-height: 480px;
+        border-radius: 20px;
+      }
+      .frame-desktop {
+        width: 100%;
+        border-radius: 14px;
+      }
+      .frame-desktop img {
+        width: 100%;
+        height: auto;
+        object-fit: contain !important;
+        border-radius: 14px;
+      }
+      .screen-card-icon-badge {
+        top: 12px;
+        left: 12px;
+      }
+      .screen-card-icon-badge svg {
+        width: 26px;
+        height: 26px;
+      }
+
+      /* --- Creator Support Card on mobile --- */
+      .app-support-card {
+        padding: 20px 16px;
+        border-radius: 22px;
+        margin-top: 24px;
+      }
+      .support-card-title {
+        font-size: 15.5px;
+      }
+      .support-card-desc {
+        font-size: 12px;
+        margin-bottom: 16px;
+      }
+      .support-actions-row {
+        gap: 8px;
+      }
+      .support-primary-btn,
+      .support-upi-quick-btn {
+        font-size: 12px;
+        padding: 8px 14px;
+      }
+
+      /* --- Section headings smaller --- */
+      .section-eyebrow {
+        font-size: 10px;
+        letter-spacing: 0.15em;
+        margin-bottom: 8px;
+      }
+      .section-heading {
+        font-size: 25px;
+      }
+      .section-desc {
+        font-size: 13px;
+        margin-top: 8px;
+      }
+
+      /* --- Sound cards: INLINE HORIZONTAL SCROLLER --- */
+      .sounds-section {
+        padding: 40px 16px;
+      }
+      .sounds-scroller-wrap {
+        margin: 0 -16px;
+        padding: 0 16px;
+      }
+      .sounds-inline-scroller {
+        display: flex !important;
+        overflow-x: auto !important;
+        flex-wrap: nowrap !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 12px;
+        padding: 8px 16px 20px;
+        margin: 0 -16px;
+        scrollbar-width: none;
+      }
+      .sounds-inline-scroller::-webkit-scrollbar {
+        display: none;
+      }
+      .sound-card {
+        flex: 0 0 80vw !important;
+        max-width: 300px;
+        scroll-snap-align: center;
+        padding: 18px !important;
+        border-radius: 18px;
+      }
+      .sound-title {
+        font-size: 14.5px;
+      }
+      .sound-desc {
+        font-size: 11.5px;
+        margin-bottom: 14px;
+      }
+      .sound-player-control {
+        padding: 8px 12px;
+        border-radius: 12px;
+        gap: 10px;
+      }
+      .sound-play-toggle {
+        width: 34px;
+        height: 34px;
+      }
+
+      /* --- UNIFIED FEATURES CONTAINER ON MOBILE --- */
+      .features-section {
+        padding: 40px 16px 50px;
+      }
+      .features-single-container {
+        padding: 24px 18px !important;
+        border-radius: 24px !important;
+      }
+      .features-grid-unified {
+        grid-template-columns: 1fr !important;
+        gap: 22px !important;
+      }
+      .feature-item {
+        gap: 6px;
+      }
+      .feature-title-blue {
+        font-size: 15.5px !important;
+      }
+      .feature-desc-dim {
+        padding-left: 0 !important;
+        font-size: 12.5px !important;
+        line-height: 1.55;
+      }
+
+      /* --- Install steps & unified pill tabs --- */
+      .install-section {
+        padding: 40px 16px;
+      }
+      .install-tabs-nav-wrap {
+        margin-bottom: 24px;
+      }
+      .install-tabs-pill {
+        padding: 3px;
+      }
+      .install-pill-glider {
+        top: 3px;
+        left: 3px;
+        width: calc(50% - 3px);
+        height: calc(100% - 6px);
+      }
+      .install-tab-btn {
+        padding: 7px 16px;
+        font-size: 12px;
+        gap: 6px;
+      }
+      .step-card {
+        border-radius: 16px;
+        padding: 18px 16px;
+        gap: 14px;
+      }
+      .step-number {
+        width: 28px;
+        height: 28px;
+        font-size: 12px;
+      }
+      .step-content h4 {
+        font-size: 14px;
+      }
+      .step-content p {
+        font-size: 12.5px;
+      }
+
+      /* --- FAQ --- */
+      .faq-section {
+        padding: 40px 16px 60px;
+      }
+      .faq-item {
+        border-radius: 16px;
+      }
+      .faq-list {
+        gap: 10px;
+      }
+      .faq-question {
+        padding: 16px 18px;
+        font-size: 14px;
+        gap: 12px;
+      }
+      .faq-answer {
+        padding: 0 18px 16px;
+        font-size: 13px;
+      }
+
+      /* --- Footer compact --- */
+      footer {
+        padding: 36px 16px 28px;
+      }
+      .footer-brand img {
+        width: 22px;
+        height: 22px;
+      }
+      .footer-brand span {
+        font-size: 16px;
+      }
+      .footer-tagline {
+        font-size: 12px;
+        margin-bottom: 18px;
+      }
+      .footer-links {
+        gap: 14px;
+        margin-bottom: 22px;
+      }
+      .footer-links a {
+        font-size: 12px;
+      }
+      .footer-copy {
+        font-size: 10.5px;
+      }
+
+      /* --- In-app browser notice --- */
+      #inapp-browser-notice {
+        font-size: 11px;
+        padding: 8px 14px;
+        line-height: 1.5;
+      }
+    }
+
+    /* ── VERY SMALL PHONES (≤ 380px) ── */
+    @media (max-width: 380px) {
+      .hero-main-heading {
+        font-size: 27px;
+      }
+      .hero-subheading {
+        font-size: 12px;
+      }
+      .nav-brand-badge {
+        display: none;
+      }
+      .download-card-btn {
+        padding: 8px 8px !important;
+        gap: 5px !important;
+      }
+      .btn-title {
+        font-size: 12px !important;
+      }
+      .btn-icon-wrapper {
+        width: 22px !important;
+        height: 22px !important;
+      }
+      .btn-icon-wrapper svg {
+        width: 12px !important;
+        height: 12px !important;
+      }
+      .sound-card {
+        flex: 0 0 85vw !important;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="loader">Decryption Handshake...</div>
-<script>
-(function(){
-  var _0xsec="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q96srKqm09Sx4uql0b/ooqGr8aWvzMep4q/5ralCGVRNBhnhqN+loq3Zt/C87L+6uLvUz6Hqp/Gloa/6sarj+aq3J1MjTQZMs7nns73e2bfwve+7u7Xsp6Dpo6qlvMu7qOGvrbawrgJCV00GTuG4sKiptf62vaO687287Kbs7c2j7KDwo66sr8DDreZOHkxKRh2osfrms6zbr9e58ri/teu/qcrNo+yh86evofizrOWvQ0pVIFJP+LjjsK61/rSjpLrztLS5paDpobi5pe6l/Kiz5+DCrgJOGklISrXa3bP8seO3v7Hoo7z1v7fxuM+7y6XupKuh/6ulxsFKA0gYTki446qz/LS/tqHUpqa89b+/obu/o+yjvafgrayvtrCuAkpXTQZOtrCorrT9t66hoPju+Pj84bDOouunpq7yqKDBxKzlqh9LS0UcV7D5s7virNuvoaWr0NG25+m4zqLrp6au8qigwcSs5aofS0tFHFew+eTirdigode58ri/teu/qcrNo+yh86evofizrOWvS0xVIFhZqN6y+7e2vuK4sNHUvPW66qCmqvG8pe6moaizxqGgo1dLBE9UT/jntLuvtf60sLmgu/S5pb/ooKOirenqyKjhr/2oq6tPICNNBkvlsbW75q22/7mx66LRpdG/6KKhq/Glr8zHqeKv+a2pQhlUTQZOubCr3qiotv+6v7u8p6C+96HwpqG/uKbvrKn7qLawrgJKVQECILD5sbC84La+09a687jovrio87qj7KSvprHEp6ahreYfTERWU0/4sOPl5q6rt/DooKa89b+7p7i74fHh4+X2ucWr5K6tQh5MRCUgsPm25rSyvuWgufK6tOun0ri4vrLPyK3qtLjBxrWxwUoDSRtKSbW02dy0/bLi7L/uvaS99r6k8rvOvObz49H37v7u6/8WVxoIEBz06O3trKz95Ofn+f+s0r73paCn9fWtq8io4a7++Kv6TEAIDwcEqOf37efx7+jmoaPw/uj6+uL/s8jJruvMx6nirvqpqE9OJyJOB7Wwt+Xlva638Li97aXQ06fPoeqmpaDw9qCxquOtrfhTUiciTge157a1sbDd2Ljxv7q56++3uKHqoqbzv8rFsbOyp+D9Gw8fFVYgsPm3tLXjv76h8vf2oL32vvTyoLik7aO9qOGoqai2s0oDTklGGqm6/6utrKrh/efp/+Xi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uu/q9Mq19vPs2ee/xKHt/e++JUsET0dOuLG1vuDq5fLl7OT/19K+96Lz96ry9r6n4Kj4r7XAtiVLBElHSOHk5tjbtf616uyz7e+lvvehpve6ybytyKjhqKKtpa5NICNNBk3i5Lvl5622/7m9uaLRpej6/vLm+vv7vsio4aiv+av6QlIHHhER8/Wi3LT9srK9sL27sdK+96Lz96ry9q3IqOGor/mr+kIgI00GS7W0u7S0rbb/ubG6otGl0b/opauk9fDyzMep4q+pqKdNS1RNBk6x4qveqOPz6ev94+TipdG/6KOkpqHz877j+vX17+m+JUsETkxM4bDgvtu1/rO9vLO8vLbn6bi+0/3w5/n+/LbzwMOt5klJTxxPHaix+rLl5K/aoNa6876/7bv0o7u67/b5+evtusSs5fpDGU9ETELfsfqwtrbntuqhuvO9v7+my7bh4/j84rDFsb3nu7SlFh4IXSFP+LK05bHnsbq48bvpubqloqDpofD3vrun4Kito/6m6RISEBhWXqHa36r/9vHu/Orio9O99uup86Gqps7Jp+CqrP2p/6lRUCFUBRzh8uektKK88en7qtS89eu/o6ajpKni//n89u3Aw63mSUlPHE8dqLH6sraxr9rT1rrzv7+97qHzuqPspKOkscTBxKzlrUhIHUwcV7D5s7u9rNuvp9LUpNGnqqC8trW6r/b5+ezw9O75pv0bCBlaT1i69+PxpNq2/7q4v7jotbPQoOmmqqP08/PDxqrjr6+tG0oeVU4HsbK3qtmt2bfwvbO87ejq1M+h6qCmpvem+rGq462srFMmVFoXEfTk7Pe+qqmgpNa687/sveujqLu/y6Xuo6Gu+/74xsFKA09PTR6x46qz/LTktKHUo7Dv4uD7+f/n9q/29+T9vqi8puv/CFsjTQZH5rG2suW48e7m7eX819K+96OjofKl976n4Kior7XAxSVLBE5MTOGw4Ku0/bezvKDXsO/i4Pv5/+f2r/b35P2+qbymwq4CT0VKHxrk2t2z/La0tOm46KO89b+5prjPu+fw4sPx9P/06emyHA4SHgoW7++qqv/m6en7/arUvPW7vfShoPGpyqbvq6up+q3/pQ0SEhkRCNvesvuxt+K3uuuiu/S8vLu5zMnMpO2jpfypqPm0reZLTR1UI0LfsfqxtbC147Cy96e89by89aa5o+yk9721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ILD5s7K257awo9a68767trml96nuuLL+9PfP8bym++sUGAgUERGo3rL7t7Xl5rm6ptS89b+2oaTwo73u5PLs7Oj1vMKuAkhMHh9Os6rds/y0v7a967qw8aGp98Lf0fGzr8mn4K2uo/mprlJLBExOSqmtpejlxN7Cr7Ps/uLu+ub//7rMpO2loqv7qauwwq4CSUhJHRriqPnx4fHz9eap1bv0vru88qKir8ul7qWsrfn+/qbjVlw3BCYM7qa43LT9srOw7L67pL326vG4vrTn5vrd/L6gxKzlqk5DGUlOV7D5s7blrPu8/OHj+Neq9qjNrM2j7KHyovr8qsDDreZOT0QYSk+osfqyt+Ov2qDE6//k1qn98f/2/Pmyy7+xtc2ysOn2EwgnWgdY3bzds/yw4ubpvLq0wez658vOouugoa7yrKmyq+T7r1MmVFRUN7resvuw4bPl7bnR1Lz1uruo9KajvKXupqyos8a00P8OEyciTge0tbrmsLWut/Dvu6LRpaej2Li+5/z85cy/7+K8waDBSgNIGUsd5bHZ3LT9srOw7L67pL32vqP3u868yqbvrP2v+fmtxSVLBElKR+W1squ0/bewvKDXo8Hs+ufLzqLroKGu8qypsqvk+69TJlRUUk/4sLu7sa+rt/C4oaa89b+58qC5vqTtpKaytKrjraqoUUtSSFdTsPmzsq61/rW4orrz7uzvpL2h6vf39L2ntqqzt+j19wkgWwsHWN283bP8seKy6uy60NO99rukqfenpL2m76mtq7LBtdMbDxQmIU/4tba74bG2r7jx7Lql0Kamvbm/o+yno/H6srer5KytTk5WTQZOq7H6sL2xtqy4p7+ioL327KL1ub6k7aLxq7K3q+SqrRtQTFNNVqz16ur33qH1r9S31Lz1uuul8/ejz8qm76ytov6orbZKAxoYVyKozOP37N7Zt/C9vrPpub6noOn0or3Ivr6ysarjrfiqT1BRTQZOt7jjqKm1/rS9vKC79L+lv76ku7+5pe6moKGrsKzlpkhMV00GTrC046i0q7WupP3i4v/W0b/opaar8aGmv6jh/Ku1wKMlSwRJGkri5LLY27X+s7yx77+8pb739vO7zrzY9+PwwsWr5KmqQh5ITVZP+Oezqtmtr62gpLrzvbq47ru8ouuloa+gs6niqf+tr1FLUkhXU62x+rLmr6u38Oq7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09a6876067z29bqj7KSh87HEp8Ss5a9MGERNGyTfsfqxveC14eyhuvPqvqfSq/L9/efhtsio4a+v/fuvHkYnIk4Hsbfhu7Tg3di48biy6b7o67ih6qKh8L/KtMaq462r/UJLGSZZCeHY1dKj2KrYuPG7ve+1vurLzqLrpqzzpP79sqvkrK0bUiFRIU/4sLTgvLXj3Ne58rm16L3p9Lmi66Whpr7FxKHErOWvShhIHEwk37H6sb3gteHsobrzvbnvps3KzaPsp6/yq//+s6zlrxhKVSBDILD5t7fl47fj08Tr/+TW0b/oo6v2p/Pyv6jhq67/tMNSJEwFT0njubLm39q2/7qw77jq6aa/6Pf0usm92/bs8cHErOWsQx5PGxpXsPnksq3Yrq6k1rrzubnv6aH1ycyk7aSu/ar8/7St5ksaS1QjVqncrty0/be3673rudfSvveiqPeg8vG+p+Corvq1wMUlSwRPRxqz5+artP23sLGg17bTvfa89PKkpKy+sefgvrbErOWvShhIHEwk37H6sb3gteHsobrzvbnvps3KzaPsp6/yq//+s6zlr0tOVSBDILD5s7Xnvbbi09a6876067z29bqj7KSlr7HEssSs5a0ZGhhNSlOn8fqkranZt/C4uui47LzUz6Hqoa3wpfH8sarjran/UyYnIk4HsrjnsOLhrrfwuLLvpdCm0KDpoKrxpvDzsKniqqr/t1YkTAVPSeO5subf2rb/urDvuOrppr/ooPChvci+yKjhq63/pa4fICNNBk255LHl4K22/7m5s6LRpdG/6KCk8Kyl88zHqeKppfitHB9UTQYa46jfq8nk8u/T1rrzvrTrvPb1uqPs86e+xbGzt6zlrx5LSVZTT/iyqLP85rPlo7nys7+5p6Og6aO5uaXupaj7+7Cs5atJT1dNBk7iuOOqqKL2/6+go6fTvfa+oPKm8qbOseTs4Pb+u8DFJUsET0cas+fmq7T9t7/soNej0732vqbyqqPxzsmn4Kuj/q/7+lJLBExMTKncrty0/bex67G67tfSvveiqPeg8vG+p+Co+Km1wLYlSwRMSBy4sefY27X+tbHsue3opb73oaSlusm9yafgqKz4pK37ISRMBUxG5bLk56y1/ra6sKPWpMDv+/jKzaPsp6/yq//+s6zl+EtSIVVXU7D5sODnrqu38LHv7qe99rmk8Lu/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";
-  var _0xk=0x7a;
-  try {
-    var raw=atob(_0xsec);
-    var bytes=new Uint8Array(raw.length);
-    for(var i=0;i<raw.length;i++){
-      bytes[i]=raw.charCodeAt(i)^((_0xk+(i%37))&0xff);
+
+  <!-- INSTAGRAM / IN-APP BROWSER NOTICE (Shows only in In-App Browsers) -->
+  <div id="inapp-browser-notice">
+    📲 <strong>In-App Browser Detected:</strong> For direct APK downloads, tap <span>⋮ (3 Dots)</span> in the top-right corner and choose <span>"Open in Chrome / External Browser"</span>!
+  </div>
+
+  <!-- AMBIENT ARTWORK BACKDROP (Velvet Music Glow) -->
+  <div class="ambient-glow-wrapper" aria-hidden="true">
+    <div class="ambient-glow-orb orb-1"></div>
+    <div class="ambient-glow-orb orb-2"></div>
+    <div class="ambient-glow-orb orb-3"></div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       ROUNDED FLOATING NAVBAR
+       ════════════════════════════════════════════════════════ -->
+  <header class="navbar-container">
+    <nav class="rounded-navbar" aria-label="Main Navigation">
+      <!-- Left: Logo & Brand -->
+      <a href="#" class="nav-brand">
+        <img src="assets/icon-transparent.svg" alt="Velvet Music" class="nav-brand-logo">
+        <span class="nav-brand-text">Velvet Music</span>
+        <span class="nav-brand-badge">Studio</span>
+      </a>
+
+      <!-- Center: Nav Links -->
+      <ul class="nav-menu">
+        <li><a href="#overview" class="nav-link">Overview</a></li>
+        <li><a href="#showcase" class="nav-link">Studio UI</a></li>
+        <li><a href="#sounds" class="nav-link">Sounds</a></li>
+        <li><a href="#features" class="nav-link">Features</a></li>
+        <li><a href="#install" class="nav-link">Install</a></li>
+        <li><a href="#faq" class="nav-link">FAQ</a></li>
+      </ul>
+
+      <!-- Right: Fast Action & Mobile Menu Toggle -->
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <a href="Velvet-Music.apk" download="Velvet-Music.apk" class="nav-cta">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span>Get App</span>
+        </a>
+        <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Mobile Dropdown Tray -->
+      <div class="mobile-dropdown" id="mobile-dropdown">
+        <a href="#overview" class="nav-link" onclick="closeMobileMenu()">Overview</a>
+        <a href="#showcase" class="nav-link" onclick="closeMobileMenu()">App Player</a>
+        <a href="#downloads" class="nav-link" onclick="closeMobileMenu()">Downloads (Android &amp; Windows)</a>
+        <a href="#sounds" class="nav-link" onclick="closeMobileMenu()">Studio Sounds</a>
+        <a href="#features" class="nav-link" onclick="closeMobileMenu()">Features</a>
+        <a href="#install" class="nav-link" onclick="closeMobileMenu()">Installation Guide</a>
+        <a href="#faq" class="nav-link" onclick="closeMobileMenu()">FAQ</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ════════════════════════════════════════════════════════
+       CENTER MAIN HEADING & HERO SECTION
+       ════════════════════════════════════════════════════════ -->
+  <main>
+    <section class="hero-section" id="overview">
+      <div class="container">
+        
+        <!-- Top Pill Badge (Centered) -->
+        <div class="hero-pill-badge">
+          <span class="pulsing-dot"></span>
+          <span>Velvet Music Studio Edition v1.2.3 • Now Available</span>
+        </div>
+
+        <!-- CENTER MAIN HEADING -->
+        <h1 class="hero-main-heading">
+          Pure Studio Audio.<br>
+          <span class="gradient-text-colored">For Android &amp; Windows.</span>
+        </h1>
+
+        <!-- CENTER SUBHEADING -->
+        <p class="hero-subheading">
+          16D Vocal &amp; Drum Spatial Separation, Studio Calibrated Punchy Soundstage EQ, Hardware Latency Buffer, and Zero Jitter. The purest offline music experience designed for true AMOLED black.
+        </p>
+
+        <!-- CENTER DUAL DOWNLOAD BUTTONS -->
+        <div class="hero-cta-group">
+          
+          <!-- Android APK Direct Download -->
+          <a href="Velvet-Music.apk" download="Velvet-Music.apk" class="download-card-btn btn-android-primary" id="hero-btn-android" title="Download Velvet Music Android APK">
+            <div class="btn-icon-wrapper">
+              <!-- Android Robot SVG -->
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0001 0-.5515.4482-1.0001.9993-1.0001.5516 0 .9998.4486.9998 1.0001 0 .5515-.4482 1.0001-.9998 1.0001m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0001 0-.5515.4482-1.0001.9993-1.0001.5516 0 .9998.4486.9998 1.0001 0 .5515-.4482 1.0001-.9998 1.0001m11.4045-6.02l1.9973-3.4592a.416.416 0 0 0-.1521-.5676.416.416 0 0 0-.5676.1521l-2.0223 3.503C15.5902 8.4116 13.8533 8.0818 12 8.0818c-1.8538 0-3.5907.3298-5.1368.8679L4.8409 5.4467a.4161.4161 0 0 0-.5677-.1521.4157.4157 0 0 0-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/>
+              </svg>
+            </div>
+            <div class="btn-content">
+              <div class="btn-title"><span class="btn-desktop-prefix">Download for </span>Android <span class="btn-badge-chip">APK</span></div>
+              <div class="btn-meta">Direct APK • v1.2.3 (13.0 MB)</div>
+            </div>
+          </a>
+
+          <!-- Windows Desktop Download -->
+          <a href="Velvet-Music-Windows-Portable.zip" download="Velvet-Music-Windows-Portable.zip" class="download-card-btn btn-windows-secondary" id="hero-btn-windows" title="Download Velvet Music for Windows">
+            <div class="btn-icon-wrapper">
+                <!-- Official Modern Windows 11 SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M0 0h11v11H0zM13 0h11v11H13zM0 13h11v11H0zM13 13h11v11H13z"/>
+                </svg>
+            </div>
+            <div class="btn-content">
+              <div class="btn-title"><span class="btn-desktop-prefix">Download for </span>Windows <span class="btn-badge-chip">x64</span></div>
+              <div class="btn-meta">Windows 10 / 11 • v1.2.3 (Portable)</div>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         INTERACTIVE APP SHOWCASE MOCKUP
+         ════════════════════════════════════════════════════════ -->
+    <section class="showcase-section reveal-on-scroll" id="showcase">
+      <div class="container">
+        <div class="section-title-wrap">
+          <span class="section-eyebrow">Studio Interface</span>
+          <h2 class="section-heading">Designed Like Pure Velvet.</h2>
+          <p class="section-desc">Explore the signature AMOLED dark aesthetic, 16D spatial separation engine, and offline studio player on Android &amp; Windows.</p>
+        </div>
+
+        <!-- ── SINGLE IMAGE CINEMATIC SHOWCASE STAGE ── -->
+        <div class="screens-showcase-wrapper" id="screens-showcase-stage">
+          <div class="single-screen-stage" id="single-screen-stage">
+            
+            <!-- Slide 0: Now Playing (Android) -->
+            <div class="showcase-slide is-active" data-index="0" id="showcase-slide-0">
+              <div class="screen-media-frame frame-mobile">
+                <div class="screen-card-icon-badge" title="Android">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#3DDC84">
+                    <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0001 0-.5515.4482-1.0001.9993-1.0001.5516 0 .9998.4486.9998 1.0001 0 .5515-.4482 1.0001-.9998 1.0001m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0001 0-.5515.4482-1.0001.9993-1.0001.5516 0 .9998.4486.9998 1.0001 0 .5515-.4482 1.0001-.9998 1.0001m11.4045-6.02l1.9973-3.4592a.416.416 0 0 0-.1521-.5676.416.416 0 0 0-.5676.1521l-2.0223 3.503C15.5902 8.4116 13.8533 8.0818 12 8.0818c-1.8538 0-3.5907.3298-5.1368.8679L4.8409 5.4467a.4161.4161 0 0 0-.5677-.1521.4157.4157 0 0 0-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/>
+                  </svg>
+                </div>
+                <img src="assets/screen-now-playing.jpg" alt="Velvet Music Now Playing on Android" loading="eager">
+              </div>
+            </div>
+
+            <!-- Slide 1: 16D Spatial Audio DSP (Android) -->
+            <div class="showcase-slide" data-index="1" id="showcase-slide-1">
+              <div class="screen-media-frame frame-mobile">
+                <div class="screen-card-icon-badge" title="Android">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#3DDC84">
+                    <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0001 0-.5515.4482-1.0001.9993-1.0001.5516 0 .9998.4486.9998 1.0001 0 .5515-.4482 1.0001-.9998 1.0001m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0001 0-.5515.4482-1.0001.9993-1.0001.5516 0 .9998.4486.9998 1.0001 0 .5515-.4482 1.0001-.9998 1.0001m11.4045-6.02l1.9973-3.4592a.416.416 0 0 0-.1521-.5676.416.416 0 0 0-.5676.1521l-2.0223 3.503C15.5902 8.4116 13.8533 8.0818 12 8.0818c-1.8538 0-3.5907.3298-5.1368.8679L4.8409 5.4467a.4161.4161 0 0 0-.5677-.1521.4157.4157 0 0 0-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/>
+                  </svg>
+                </div>
+                <img src="assets/screen-spatial-audio.png" alt="Velvet Music 16D Spatial Audio on Android" loading="lazy">
+              </div>
+            </div>
+
+            <!-- Slide 2: Library (Android) -->
+            <div class="showcase-slide" data-index="2" id="showcase-slide-2">
+              <div class="screen-media-frame frame-mobile">
+                <div class="screen-card-icon-badge" title="Android">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#3DDC84">
+                    <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0001 0-.5515.4482-1.0001.9993-1.0001.5516 0 .9998.4486.9998 1.0001 0 .5515-.4482 1.0001-.9998 1.0001m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0001 0-.5515.4482-1.0001.9993-1.0001.5516 0 .9998.4486.9998 1.0001 0 .5515-.4482 1.0001-.9998 1.0001m11.4045-6.02l1.9973-3.4592a.416.416 0 0 0-.1521-.5676.416.416 0 0 0-.5676.1521l-2.0223 3.503C15.5902 8.4116 13.8533 8.0818 12 8.0818c-1.8538 0-3.5907.3298-5.1368.8679L4.8409 5.4467a.4161.4161 0 0 0-.5677-.1521.4157.4157 0 0 0-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/>
+                  </svg>
+                </div>
+                <img src="assets/screen-library.jpg" alt="Velvet Music Library on Android" loading="lazy">
+              </div>
+            </div>
+
+            <!-- Slide 3: Desktop Windows DSP (Official Windows 11 Full Size, 0% Cut) -->
+            <div class="showcase-slide" data-index="3" id="showcase-slide-3">
+              <div class="screen-media-frame frame-desktop">
+                <div class="screen-card-icon-badge" title="Windows 11">
+                  <!-- Current Official Windows 11 Fluent Blue Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#0078D4">
+                    <path d="M0 0h11v11H0zM13 0h11v11H13zM0 13h11v11H0zM13 13h11v11H13z"/>
+                  </svg>
+                </div>
+                <img src="assets/screen-desktop-dsp.jpg" alt="Velvet Music Windows Edition Studio DSP" loading="lazy">
+              </div>
+            </div>
+
+            <!-- Slide 4: Desktop Windows Split Player (Official Windows 11 Full Size, 0% Cut) -->
+            <div class="showcase-slide" data-index="4" id="showcase-slide-4">
+              <div class="screen-media-frame frame-desktop">
+                <div class="screen-card-icon-badge" title="Windows 11">
+                  <!-- Current Official Windows 11 Fluent Blue Icon -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#0078D4">
+                    <path d="M0 0h11v11H0zM13 0h11v11H13zM0 13h11v11H0zM13 13h11v11H13z"/>
+                  </svg>
+                </div>
+                <img src="assets/screen-desktop-player.jpg" alt="Velvet Music Windows Edition Player" loading="lazy">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── DONATION & CREATOR SUPPORT UI (Bottom of App Mockup) ── -->
+        <div class="app-support-card reveal-on-scroll">
+          <div class="support-card-inner">
+            <div class="support-badge-row">
+              <span class="support-pill-badge">
+                <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="#ec4899">
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                </svg>
+                Creator Support
+              </span>
+              <span class="support-free-pill">100% Free &amp; Ad-Free</span>
+            </div>
+
+            <h3 class="support-card-title">Love Velvet Music? Support the Journey</h3>
+            <p class="support-card-desc">Handcrafted for audiophiles with zero ads, zero tracking, and pure offline privacy. If you appreciate the 16D spatial sound and pure AMOLED player, support ongoing development with a coffee or contribution.</p>
+
+            <div class="support-actions-row">
+              <button class="support-primary-btn" onclick="openDonationModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                <span>Support / Buy a Coffee</span>
+              </button>
+
+              <button class="support-upi-quick-btn" onclick="openDonationModal()">
+                <span>⚡ Support via UPI / Cards</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         LUXURY NOTIFICATION SOUNDS (Interactive Audio Showcase)
+         ════════════════════════════════════════════════════════ -->
+    <section class="sounds-section reveal-on-scroll" id="sounds">
+      <div class="container">
+        
+        <div class="section-title-wrap">
+          <span class="section-eyebrow">Studio Acoustics</span>
+          <h2 class="section-heading">Velvet Signature Sounds.</h2>
+          <p class="section-desc">Experience our signature studio alerts and notification chimes. Designed to be soothing, musical, and zero-fatigue.</p>
+        </div>
+
+        <!-- Inline Horizontal Scroller for Sound Cards -->
+        <div class="sounds-scroller-wrap">
+          <div class="sounds-grid sounds-inline-scroller" id="sounds-scroller">
+            
+            <!-- Sound 1: Velvet Celestial -->
+            <div class="sound-card stagger-child" id="card-sound-1">
+              <div>
+                <div class="sound-badge">Active Default in App</div>
+                <h3 class="sound-title">Option 1: Velvet Celestial</h3>
+                <p class="sound-desc">Soothing ascending harp chord (E5 &rarr; B5 &rarr; E6). Zero warning feel, engineered for calm alerts.</p>
+              </div>
+              
+              <div class="sound-player-control">
+                <button class="sound-play-toggle" onclick="toggleSound('assets/sound_celestial.wav', 'card-sound-1')" aria-label="Play Velvet Celestial">
+                  <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                </button>
+                <div class="sound-wave-bars">
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                </div>
+                <span style="font-size: 11px; font-family: 'Space Mono', monospace; color: rgba(255,255,255,0.5);">0:02</span>
+              </div>
+            </div>
+
+            <!-- Sound 2: Velvet Kalimba -->
+            <div class="sound-card stagger-child" id="card-sound-2">
+              <div>
+                <div class="sound-badge">Warm Acoustic</div>
+                <h3 class="sound-title">Option 2: Velvet Kalimba</h3>
+                <p class="sound-desc">Warm acoustic 2-tone wooden bloom (F#5 &rarr; C#6). Organic, cozy, and soft on the ears.</p>
+              </div>
+              
+              <div class="sound-player-control">
+                <button class="sound-play-toggle" onclick="toggleSound('assets/sound_kalimba.wav', 'card-sound-2')" aria-label="Play Velvet Kalimba">
+                  <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                </button>
+                <div class="sound-wave-bars">
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                </div>
+                <span style="font-size: 11px; font-family: 'Space Mono', monospace; color: rgba(255,255,255,0.5);">0:02</span>
+              </div>
+            </div>
+
+            <!-- Sound 3: Velvet Luxury Harp -->
+            <div class="sound-card stagger-child" id="card-sound-3">
+              <div>
+                <div class="sound-badge">Studio Glissando</div>
+                <h3 class="sound-title">Option 3: Velvet Luxury Harp</h3>
+                <p class="sound-desc">Delicate 3-note glissando (D5 &rarr; A5 &rarr; F#6). High-end studio chime with pristine decay.</p>
+              </div>
+              
+              <div class="sound-player-control">
+                <button class="sound-play-toggle" onclick="toggleSound('assets/sound_harp.wav', 'card-sound-3')" aria-label="Play Velvet Luxury Harp">
+                  <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                  <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" style="display: none;"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                </button>
+                <div class="sound-wave-bars">
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                  <div class="sound-wave-bar"></div>
+                </div>
+                <span style="font-size: 11px; font-family: 'Space Mono', monospace; color: rgba(255,255,255,0.5);">0:02</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         APP FEATURES (Unified Single Container)
+         ════════════════════════════════════════════════════════ -->
+    <section class="features-section reveal-on-scroll" id="features">
+      <div class="container">
+        
+        <div class="section-title-wrap">
+          <span class="section-eyebrow">Audio Engine</span>
+          <h2 class="section-heading">Engineered for Perfection.</h2>
+          <p class="section-desc">Every element of Velvet Music is handcrafted for audiophiles who demand true stage fidelity.</p>
+        </div>
+
+        <!-- Unified Single Features Container -->
+        <div class="features-single-container">
+          <div class="features-grid-unified">
+            
+            <!-- Feature 1 -->
+            <div class="feature-item stagger-child">
+              <div class="feature-item-header">
+                <div class="feature-icon-box">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10v4a3 3 0 0 1-3 3h-1a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h2a8 8 0 0 0-16 0h2a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a3 3 0 0 1-3-3v-4A10 10 0 0 1 12 2z"/></svg>
+                </div>
+                <h3 class="feature-title-blue">16D Spatial Separation</h3>
+              </div>
+              <p class="feature-desc-dim">Dynamic phase alignment that isolates vocals, percussion, and acoustic instruments into a spacious, immersive 3D soundfield.</p>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-item stagger-child">
+              <div class="feature-item-header">
+                <div class="feature-icon-box">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                </div>
+                <h3 class="feature-title-blue">Studio Soundstage EQ</h3>
+              </div>
+              <p class="feature-desc-dim">Calibrated frequency curves with tight sub-bass, silky transparent mids, and crystal-clear highs without clipping or distortion.</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-item stagger-child">
+              <div class="feature-item-header">
+                <div class="feature-icon-box">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                </div>
+                <h3 class="feature-title-blue">Hardware Zero-Jitter Buffer</h3>
+              </div>
+              <p class="feature-desc-dim">Deep dual-ring hardware audio buffer preventing stutter, frame drops, or background playback termination by aggressive OS task killers.</p>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="feature-item stagger-child">
+              <div class="feature-item-header">
+                <div class="feature-icon-box">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="9" y1="10" x2="15" y2="10"/><line x1="9" y1="14" x2="13" y2="14"/></svg>
+                </div>
+                <h3 class="feature-title-blue">Synchronized Real-Time Lyrics</h3>
+              </div>
+              <p class="feature-desc-dim">Native LRC lyric parser with millisecond line tracking, integrated editor, and offline ID3 embedded metadata artwork extraction.</p>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="feature-item stagger-child">
+              <div class="feature-item-header">
+                <div class="feature-icon-box">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a7 7 0 1 0 10 10"/></svg>
+                </div>
+                <h3 class="feature-title-blue">Pure AMOLED Black UI</h3>
+              </div>
+              <p class="feature-desc-dim">True #000000 dark canvas with zero light leakage, ensuring unmatched contrast and extensive battery savings on OLED displays.</p>
+            </div>
+
+            <!-- Feature 6 -->
+            <div class="feature-item stagger-child">
+              <div class="feature-item-header">
+                <div class="feature-icon-box">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                </div>
+                <h3 class="feature-title-blue">Total Privacy &amp; 100% Offline</h3>
+              </div>
+              <p class="feature-desc-dim">No login required, no telemetry, no tracking cookies. Your entire music library stays strictly offline on your own personal device.</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         STEP-BY-STEP INSTALLATION GUIDE (Android & Windows)
+         ════════════════════════════════════════════════════════ -->
+    <section class="install-section reveal-on-scroll" id="install">
+      <div class="container">
+        
+        <div class="section-title-wrap">
+          <span class="section-eyebrow">Quick Setup</span>
+          <h2 class="section-heading">How to Install.</h2>
+          <p class="section-desc">Follow these quick 3-step instructions to get Velvet Music running on your device in seconds.</p>
+        </div>
+
+        <!-- Platform Tabs: Single Unified Pill Switcher -->
+        <div class="install-tabs-nav-wrap">
+          <div class="install-tabs-pill" id="install-tabs-pill" role="tablist">
+            <div class="install-pill-glider" id="install-pill-glider"></div>
+            <button class="install-tab-btn is-active" id="tab-btn-android" role="tab" aria-selected="true" onclick="switchInstallTab('android')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0001 0-.5515.4482-1.0001.9993-1.0001.5516 0 .9998.4486.9998 1.0001 0 .5515-.4482 1.0001-.9998 1.0001m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0001 0-.5515.4482-1.0001.9993-1.0001.5516 0 .9998.4486.9998 1.0001 0 .5515-.4482 1.0001-.9998 1.0001m11.4045-6.02l1.9973-3.4592a.416.416 0 0 0-.1521-.5676.416.416 0 0 0-.5676.1521l-2.0223 3.503C15.5902 8.4116 13.8533 8.0818 12 8.0818c-1.8538 0-3.5907.3298-5.1368.8679L4.8409 5.4467a.4161.4161 0 0 0-.5677-.1521.4157.4157 0 0 0-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3432-4.1021-2.6889-7.5743-6.1185-9.4396"/>
+              </svg>
+              <span>Android APK</span>
+            </button>
+            <button class="install-tab-btn" id="tab-btn-windows" role="tab" aria-selected="false" onclick="switchInstallTab('windows')">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M0 0h11v11H0zM13 0h11v11H13zM0 13h11v11H0zM13 13h11v11H13z"/>
+              </svg>
+              <span>Windows App</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Android Panel -->
+        <div class="install-panel is-active" id="install-panel-android">
+          <div class="steps-list">
+            <div class="step-card">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Download the Velvet Music APK</h4>
+                <p>Tap the <strong>"Download Velvet-Music.apk"</strong> button above. The ~12.4 MB installation package will begin downloading immediately to your device.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Allow "Install Unknown Apps" If Prompted</h4>
+                <p>If your browser shows a safety warning ("File might be harmful"), tap <strong>"Download anyway"</strong>. Open the file; if Android asks for permission, tap <strong>Settings &rarr; Allow from this source</strong>.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Tap Install and Enjoy Studio Sound</h4>
+                <p>Tap <strong>"Install"</strong>. Once installed, grant music storage permission to automatically scan and index your offline tracks with album art!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Windows Panel -->
+        <div class="install-panel" id="install-panel-windows">
+          <div class="steps-list">
+            <div class="step-card">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Download the Windows Zip Package</h4>
+                <p>Click the <strong>"Download Windows Package (.zip)"</strong> button above to download the ultra-compact portable distribution file.</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Extract the Zip File</h4>
+                <p>Right-click <code>Velvet-Music-Windows-Portable.zip</code> and select <strong>"Extract All..."</strong> to any folder (e.g. Desktop or Documents).</p>
+              </div>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Double-Click "Launch-Velvet-Music.bat"</h4>
+                <p>Double-click the launcher script. Velvet Music will open immediately in a standalone, borderless native studio app window with full keyboard shortcuts!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════════════════
+         FREQUENTLY ASKED QUESTIONS
+         ════════════════════════════════════════════════════════ -->
+    <section class="faq-section reveal-on-scroll" id="faq">
+      <div class="container">
+        
+        <div class="section-title-wrap">
+          <span class="section-eyebrow">Clear Answers</span>
+          <h2 class="section-heading">Frequently Asked Questions.</h2>
+        </div>
+
+        <div class="faq-list">
+          
+          <div class="faq-item stagger-child">
+            <button class="faq-question">
+              <span>Why does Android say "File might be harmful"?</span>
+              <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              This is a standard default security prompt shown by Google Chrome and Android whenever you download any direct .apk file outside the Google Play Store. Velvet Music is 100% clean, verified, contains zero ads, and collects zero personal data. Simply tap "Download anyway".
+            </div>
+          </div>
+
+          <div class="faq-item stagger-child">
+            <button class="faq-question">
+              <span>What audio formats are supported?</span>
+              <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              Velvet Music supports all major lossless and lossy audio formats including FLAC (up to 24-bit/192kHz), MP3, WAV, AAC, M4A, OGG, and OPUS with hardware decoding acceleration.
+            </div>
+          </div>
+
+          <div class="faq-item stagger-child">
+            <button class="faq-question">
+              <span>How does the Windows version work?</span>
+              <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              The Windows Desktop Edition runs as a standalone native window leveraging modern Chromium/Edge app-runtime. It requires zero installation, does not modify your Windows registry, and can be run completely portably from a USB drive!
+            </div>
+          </div>
+
+          <div class="faq-item stagger-child">
+            <button class="faq-question">
+              <span>Is Velvet Music free? Are there advertisements?</span>
+              <svg class="faq-chevron" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              Velvet Music is 100% free with absolutely zero ads, popups, or banner tracking. We believe pure music playback should remain uninterrupted and uncompromised.
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ════════════════════════════════════════════════════════
+       FOOTER
+       ════════════════════════════════════════════════════════ -->
+  <footer class="reveal-on-scroll">
+    <div class="container">
+      <a href="#" class="footer-brand">
+        <img src="assets/icon-transparent.svg" alt="Velvet Music Logo">
+        <span>Velvet Music</span>
+      </a>
+      <p class="footer-tagline">Precision Audio Engineering • Designed for Audiophiles</p>
+      
+      <div class="footer-links">
+        <a href="#overview">Overview</a>
+        <a href="Velvet-Music.apk" download="Velvet-Music.apk">Android APK</a>
+        <a href="Velvet-Music-Windows-Portable.zip" download="Velvet-Music-Windows-Portable.zip">Windows App</a>
+        <a href="#sounds">Studio Sounds</a>
+        <a href="#features">Features</a>
+        <a href="#install">How to Install</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <p class="footer-copy">
+        &copy; 2026 Velvet Music Production. All rights reserved. • Built with Pure AMOLED Architecture.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ════════════════════════════════════════════════════════
+       DONATION & SUPPORT MODAL (Pure AMOLED Styling)
+       ════════════════════════════════════════════════════════ -->
+  <div class="donation-modal-backdrop" id="donation-modal" onclick="closeDonationModal(event)">
+    <div class="donation-modal-sheet" onclick="event.stopPropagation()">
+      <div class="modal-drag-bar"></div>
+      
+      <div class="donation-modal-header">
+        <div class="donation-modal-heart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="#ec4899">
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+          </svg>
+        </div>
+        <div style="flex: 1;">
+          <h3 style="font-size: 18px; font-weight: 700; color: #ffffff;">Support Velvet Music</h3>
+          <p style="font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px;">Keep the music player free, ad-free &amp; independent</p>
+        </div>
+        <button class="modal-close-btn" onclick="closeDonationModal()">&times;</button>
+      </div>
+
+      <div class="donation-amounts-grid">
+        <button class="amount-pill is-active" onclick="selectDonationAmount(this, '₹50')">☕ ₹50</button>
+        <button class="amount-pill" onclick="selectDonationAmount(this, '₹100')">🍕 ₹100</button>
+        <button class="amount-pill" onclick="selectDonationAmount(this, '₹250')">🎧 ₹250</button>
+        <button class="amount-pill" onclick="selectDonationAmount(this, '₹500')">💎 ₹500</button>
+      </div>
+
+      <div class="upi-box">
+        <div class="upi-label">UPI ID for Direct Support</div>
+        <div class="upi-field">
+          <span class="upi-id-text" id="upi-id-val">velvetmusic@upi</span>
+          <button class="upi-copy-btn" id="upi-copy-btn" onclick="copyUpiId('velvetmusic@upi', this)">
+            Copy UPI
+          </button>
+        </div>
+      </div>
+
+      <p class="modal-footer-note">Every single contribution helps us refine the 16D spatial separation engine, audio buffering, and zero-latency hardware EQ. Thank you! ❤️</p>
+    </div>
+  </div>
+
+  <!-- Hidden Audio Elements for Chimes Preview -->
+  <audio id="global-preview-audio" preload="none"></audio>
+
+  <!-- ════════════════════════════════════════════════════════
+       CLIENT SCRIPT: INTERACTION & AUDIO ENGINE
+       ════════════════════════════════════════════════════════ -->
+  <script>
+    // 1. IN-APP BROWSER DETECTOR (Instagram / TikTok / Facebook)
+    (function detectInAppBrowser() {
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      var isInApp = /Instagram|FBAN|FBAV|ByteDance|TikTok|Snapchat/i.test(ua);
+      if (isInApp) {
+        var banner = document.getElementById('inapp-browser-notice');
+        if (banner) banner.style.display = 'block';
+      }
+    })();
+
+    // 2. MOBILE MENU TOGGLE
+    var mobileToggle = document.getElementById('mobile-toggle');
+    var mobileDropdown = document.getElementById('mobile-dropdown');
+    if (mobileToggle && mobileDropdown) {
+      mobileToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        mobileDropdown.classList.toggle('is-open');
+      });
+      document.addEventListener('click', function(e) {
+        if (!mobileDropdown.contains(e.target) && e.target !== mobileToggle) {
+          mobileDropdown.classList.remove('is-open');
+        }
+      });
     }
-    var dec=new TextDecoder("utf-8").decode(bytes);
-    document.open();
-    document.write(dec);
-    document.close();
-  } catch(e) {
-    document.body.innerHTML="<p style='color:red'>Decryption Error</p>";
-  }
-})();
-</script>
+    function closeMobileMenu() {
+      if (mobileDropdown) mobileDropdown.classList.remove('is-open');
+    }
+
+    // 3. INSTALLATION TABS SWITCHER WITH LIQUID GLIDER & SWIPE
+    function switchInstallTab(platform) {
+      var btnAndroid = document.getElementById('tab-btn-android');
+      var btnWindows = document.getElementById('tab-btn-windows');
+      var panelAndroid = document.getElementById('install-panel-android');
+      var panelWindows = document.getElementById('install-panel-windows');
+      var glider = document.getElementById('install-pill-glider');
+
+      if (platform === 'android') {
+        if (btnAndroid) {
+          btnAndroid.classList.add('is-active');
+          btnAndroid.setAttribute('aria-selected', 'true');
+        }
+        if (btnWindows) {
+          btnWindows.classList.remove('is-active');
+          btnWindows.setAttribute('aria-selected', 'false');
+        }
+        if (panelAndroid) panelAndroid.classList.add('is-active');
+        if (panelWindows) panelWindows.classList.remove('is-active');
+        if (glider) glider.style.transform = 'translateX(0)';
+      } else {
+        if (btnWindows) {
+          btnWindows.classList.add('is-active');
+          btnWindows.setAttribute('aria-selected', 'true');
+        }
+        if (btnAndroid) {
+          btnAndroid.classList.remove('is-active');
+          btnAndroid.setAttribute('aria-selected', 'false');
+        }
+        if (panelWindows) panelWindows.classList.add('is-active');
+        if (panelAndroid) panelAndroid.classList.remove('is-active');
+        if (glider) glider.style.transform = 'translateX(100%)';
+      }
+    }
+
+    // Touch Swipe Gesture for Install Tabs
+    (function initInstallSwipe() {
+      var startX = 0;
+      var installSec = document.getElementById('install');
+      if (!installSec) return;
+
+      installSec.addEventListener('touchstart', function(e) {
+        if (e.touches && e.touches[0]) startX = e.touches[0].clientX;
+      }, { passive: true });
+
+      installSec.addEventListener('touchend', function(e) {
+        if (!e.changedTouches || !e.changedTouches[0]) return;
+        var diff = e.changedTouches[0].clientX - startX;
+        if (diff < -50) {
+          switchInstallTab('windows'); // Swipe left -> Windows
+        } else if (diff > 50) {
+          switchInstallTab('android'); // Swipe right -> Android
+        }
+      }, { passive: true });
+    })();
+
+    // 4. INTERACTIVE SOUND PREVIEW ENGINE
+    var currentAudio = document.getElementById('global-preview-audio');
+    var activeSoundCardId = null;
+
+    function toggleSound(soundUrl, cardId) {
+      var card = document.getElementById(cardId);
+      if (!currentAudio) return;
+
+      if (activeSoundCardId === cardId && !currentAudio.paused) {
+        currentAudio.pause();
+        resetSoundCards();
+        return;
+      }
+
+      resetSoundCards();
+      currentAudio.src = soundUrl;
+      currentAudio.play().then(function() {
+        activeSoundCardId = cardId;
+        if (card) {
+          card.classList.add('is-playing');
+          var iconPlay = card.querySelector('.icon-play');
+          var iconPause = card.querySelector('.icon-pause');
+          if (iconPlay) iconPlay.style.display = 'none';
+          if (iconPause) iconPause.style.display = 'block';
+        }
+      }).catch(function(err) {
+        console.warn('Audio playback was prevented by browser policy:', err);
+      });
+
+      currentAudio.onended = function() {
+        resetSoundCards();
+      };
+    }
+
+    function resetSoundCards() {
+      activeSoundCardId = null;
+      var cards = document.querySelectorAll('.sound-card');
+      cards.forEach(function(c) {
+        c.classList.remove('is-playing');
+        var p = c.querySelector('.icon-play');
+        var ps = c.querySelector('.icon-pause');
+        if (p) p.style.display = 'block';
+        if (ps) ps.style.display = 'none';
+      });
+    }
+
+    // 5. SINGLE-IMAGE CINEMATIC SHOWCASE ENGINE (Scroll, Wheel & Touch Transitions)
+    var currentSlideIndex = 0;
+    var totalSlides = 5;
+    var isSlideTransitioning = false;
+    var slideMeta = [
+      { title: "Now Playing", os: "Android" },
+      { title: "16D Spatial Audio DSP", os: "Android" },
+      { title: "Music Library", os: "Android" },
+      { title: "Studio DSP Master", os: "Windows 11" },
+      { title: "Split Player Interface", os: "Windows 11" }
+    ];
+
+    function goToSlide(targetIndex, direction) {
+      if (targetIndex === currentSlideIndex || isSlideTransitioning) return false;
+      if (targetIndex < 0 || targetIndex >= totalSlides) return false;
+
+      isSlideTransitioning = true;
+      var forward = direction !== undefined ? direction > 0 : (targetIndex > currentSlideIndex);
+      var slides = document.querySelectorAll('.showcase-slide');
+      var currentSlide = slides[currentSlideIndex];
+      var nextSlide = slides[targetIndex];
+
+      if (!currentSlide || !nextSlide) {
+        isSlideTransitioning = false;
+        return false;
+      }
+
+      // Hide last image with smooth animation
+      currentSlide.classList.remove('is-active');
+      currentSlide.classList.add(forward ? 'is-exiting-forward' : 'is-exiting-backward');
+
+      // Animate next image in
+      nextSlide.classList.remove('is-exiting-forward', 'is-exiting-backward');
+      nextSlide.classList.add('is-active');
+
+      setTimeout(function() {
+        if (currentSlide) {
+          currentSlide.classList.remove('is-exiting-forward', 'is-exiting-backward');
+        }
+        isSlideTransitioning = false;
+      }, 480);
+
+      currentSlideIndex = targetIndex;
+      return true;
+    }
+
+    function nextSlide() {
+      if (currentSlideIndex < totalSlides - 1) {
+        return goToSlide(currentSlideIndex + 1, 1);
+      }
+      return false;
+    }
+
+    function prevSlide() {
+      if (currentSlideIndex > 0) {
+        return goToSlide(currentSlideIndex - 1, -1);
+      }
+      return false;
+    }
+
+    (function initShowcaseInteractions() {
+      var stage = document.getElementById('screens-showcase-stage');
+      if (!stage) return;
+
+      // Mouse Wheel Navigation (Scroll on showcase advances slides with inertia)
+      var wheelLock = false;
+      stage.addEventListener('wheel', function(e) {
+        if (wheelLock) return;
+        var delta = Math.abs(e.deltaY) > Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+        if (Math.abs(delta) < 22) return;
+
+        if (delta > 0) {
+          // Scroll down -> next image
+          var handled = nextSlide();
+          if (handled) {
+            e.preventDefault();
+            wheelLock = true;
+            setTimeout(function() { wheelLock = false; }, 420);
+          }
+        } else {
+          // Scroll up -> previous image
+          var handled = prevSlide();
+          if (handled) {
+            e.preventDefault();
+            wheelLock = true;
+            setTimeout(function() { wheelLock = false; }, 420);
+          }
+        }
+      }, { passive: false });
+
+      // Mobile Touch Swipe Navigation
+      var touchStartX = 0;
+      var touchStartY = 0;
+      stage.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 1) {
+          touchStartX = e.touches[0].clientX;
+          touchStartY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+
+      stage.addEventListener('touchend', function(e) {
+        if (!touchStartX) return;
+        var touchEndX = e.changedTouches[0].clientX;
+        var touchEndY = e.changedTouches[0].clientY;
+        var diffX = touchEndX - touchStartX;
+        var diffY = touchEndY - touchStartY;
+
+        if (Math.abs(diffX) > 42 && Math.abs(diffX) > Math.abs(diffY)) {
+          if (diffX < 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+        touchStartX = 0;
+        touchStartY = 0;
+      }, { passive: true });
+
+      // Click on frame to advance
+      var frames = stage.querySelectorAll('.screen-media-frame');
+      frames.forEach(function(frame) {
+        frame.addEventListener('click', function(e) {
+          var rect = frame.getBoundingClientRect();
+          var clickX = e.clientX - rect.left;
+          if (clickX > rect.width / 2) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        });
+      });
+    })();
+
+    // 7. FAQ ACCORDION TOGGLE
+    var faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(function(item) {
+      var question = item.querySelector('.faq-question');
+      if (question) {
+        question.addEventListener('click', function() {
+          var isOpen = item.classList.contains('is-open');
+          faqItems.forEach(function(i) { i.classList.remove('is-open'); });
+          if (!isOpen) item.classList.add('is-open');
+        });
+      }
+    });
+
+    // 8. DONATION / SUPPORT MODAL HANDLERS
+    function openDonationModal() {
+      var modal = document.getElementById('donation-modal');
+      if (modal) {
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeDonationModal(e) {
+      if (e && e.target && e.target !== e.currentTarget && !e.target.classList.contains('modal-close-btn')) {
+        return;
+      }
+      var modal = document.getElementById('donation-modal');
+      if (modal) {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function selectDonationAmount(btn, amt) {
+      var pills = document.querySelectorAll('.amount-pill');
+      pills.forEach(function(p) { p.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+    }
+
+    function copyUpiId(text, btn) {
+      navigator.clipboard.writeText(text).then(function() {
+        var originalText = btn.textContent;
+        btn.textContent = '✓ Copied!';
+        btn.style.color = '#10b981';
+        setTimeout(function() {
+          btn.textContent = originalText;
+          btn.style.color = '';
+        }, 2200);
+      }).catch(function() {
+        prompt('UPI ID:', text);
+      });
+    }
+
+    // 9. SCROLL REVEAL OBSERVER (Silky Smooth Scroll Entrances)
+    (function initScrollReveal() {
+      var revealElements = document.querySelectorAll('.reveal-on-scroll');
+      if (!revealElements.length) return;
+
+      if (!('IntersectionObserver' in window)) {
+        revealElements.forEach(function(el) { el.classList.add('is-revealed'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+
+    // Keyboard ESC to close modal
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeDonationModal();
+    });
+  </script>
 </body>
 </html>
